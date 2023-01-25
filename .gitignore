@@ -1,17 +1,29 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+admin/node_modules
+client/node_modules
+api/node_modules
+
+
+admin/.pnp
+admin/.pnp.js
+api/.pnp
+api/.pnp.js
+client/.pnp
+client/.pnp.js
+
 
 # testing
-/coverage
+admin/coverage
+client/coverage
+api/coverage
+
 
 # production
-/build
+admin/build
+client/build
+api/build
 
-/Helpers Projects notes
 
 # misc
 .DS_Store
@@ -23,4 +35,3 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-s
