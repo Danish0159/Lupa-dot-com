@@ -3,17 +3,14 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
-
-  const lang = localStorage.getItem("lang");
-
   return (
     <>
       <Wrapper>
         <section>
           <h1>404</h1>
-          {lang === "en" ?(<h3>Sorry, the page you tried cannot be found</h3>):(<h3>عذرا ، الصفحة التي حاولت لا يمكن العثور عليها</h3>) }
+          <h3>Sorry, the page you tried cannot be found</h3>
           <Link to="/" className="btn">
-          {lang === "en" ? "Back Home": "العودة إلى المنزل"}
+            Back Home
           </Link>
         </section>
       </Wrapper>
@@ -22,7 +19,7 @@ const ErrorPage = () => {
 };
 
 const Wrapper = styled.main`
-  background-color: var(--clr-blue-2);
+  background-color: #003580;
   display: flex;
   justify-content: center;
   align-items: center;

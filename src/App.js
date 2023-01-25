@@ -37,11 +37,11 @@ const App = () => {
             <Route exact path="/HomePage">
               <HomePage></HomePage>
             </Route>
-            <Route exact path="/HotelPage">
-              <HotelPage></HotelPage>
-            </Route>
-            <Route exact path="/ListPage">
+            <Route exact path="/hotels">
               <ListPage></ListPage>
+            </Route>
+            <Route exact path="/hotels/:id">
+              <HotelPage></HotelPage>
             </Route>
             <Route exact path="*">
               <ErrorPage></ErrorPage>
