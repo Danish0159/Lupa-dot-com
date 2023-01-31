@@ -11,7 +11,7 @@ const FeaturedProperties = () => {
 
   return (
     <div className="fp">
-      {data.length > 0 && data.map((item) => (
+      {data.map((item) => (
         <div className="fpItem" key={item._id}>
           <img
             src={item.photos[0]}

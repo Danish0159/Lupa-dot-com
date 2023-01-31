@@ -86,7 +86,7 @@ const Hotel = () => {
               />
               <div className="sliderWrapper">
                 <img
-                  src={data.length > 0 && data.photos[slideNumber]}
+                  src={data.photos[slideNumber]}
                   alt=""
                   className="sliderImg"
                 />
@@ -103,13 +103,13 @@ const Hotel = () => {
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
-              <span>{data.length > 0 && data.address}</span>
+              <span>{data.address}</span>
             </div>
             <span className="hotelDistance">
-              Excellent location – {data.length > 0 && data.distance}m from center
+              Excellent location – {data.distance}m from center
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.length > 0 && data.cheapestPrice} at this property and get a
+              Book a stay over ${data.cheapestPrice} at this property and get a
               free airport taxi
             </span>
             <div className="hotelImages">
@@ -126,8 +126,8 @@ const Hotel = () => {
             </div>
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
-                <h1 className="hotelTitle">{data.length > 0 && data.title}</h1>
-                <p className="hotelDesc">{data.length > 0 && data.desc}</p>
+                <h1 className="hotelTitle">{data.title}</h1>
+                <p className="hotelDesc">{data.desc}</p>
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
