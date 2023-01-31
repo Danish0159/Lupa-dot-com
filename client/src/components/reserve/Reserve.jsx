@@ -63,7 +63,7 @@ const Reserve = ({ setOpen, hotelId }) => {
       );
       setOpen(false);
       navigate("/");
-    } catch (err) {}
+    } catch (err) { }
   };
   return (
     <div className="reserve">
@@ -74,7 +74,7 @@ const Reserve = ({ setOpen, hotelId }) => {
           onClick={() => setOpen(false)}
         />
         <span>Select your rooms:</span>
-        {data.map((item) => (
+        {data.length > 0 && data.map((item) => (
           <div className="rItem" key={item._id}>
             <div className="rItemInfo">
               <div className="rTitle">{item.title}</div>

@@ -111,7 +111,7 @@ const List = () => {
               <AbsoluteSpinner></AbsoluteSpinner>
             ) : (
               <>
-                {data.map((item) => (
+                {data.length > 0 && data.map((item) => (
                   <SearchItem item={item} key={item._id} />
                 ))}
               </>

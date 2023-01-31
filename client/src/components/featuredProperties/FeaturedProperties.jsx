@@ -8,9 +8,10 @@ const FeaturedProperties = () => {
   if (loading) {
     return <Spinner />;
   }
+
   return (
     <div className="fp">
-      {data && data.map((item) => (
+      {data.length > 0 && data.map((item) => (
         <div className="fpItem" key={item._id}>
           <img
             src={item.photos[0]}

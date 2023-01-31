@@ -17,7 +17,7 @@ const PropertyList = () => {
   }
   return (
     <div className="pList">
-      {data &&
+      {data.length > 0 && data &&
         images.map((img, i) => (
           <div className="pListItem" key={i}>
             <img
@@ -26,8 +26,8 @@ const PropertyList = () => {
               className="pListImg"
             />
             <div className="pListTitles">
-              <h1>{data[i]?.type}</h1>
-              <h2>{data[i]?.count} {data[i]?.type}</h2>
+              <h1>{data.length > 0 && data[i]?.type}</h1>
+              <h2>{data.length > 0 && data[i]?.count} {data[i]?.type}</h2>
             </div>
           </div>
         ))}
