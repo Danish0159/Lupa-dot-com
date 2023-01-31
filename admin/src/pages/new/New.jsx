@@ -32,7 +32,7 @@ const New = ({ inputs, title }) => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("https://fypbookingbea.adaptable.app/api" + "auth/register", newUser);
     } catch (err) {
       console.log(err);
     }

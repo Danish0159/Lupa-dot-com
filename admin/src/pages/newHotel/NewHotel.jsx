@@ -53,7 +53,7 @@ const NewHotel = () => {
         photos: list,
       };
 
-      await axios.post("/hotels", newhotel);
+      await axios.post("https://fypbookingbea.adaptable.app/api" + "/hotels", newhotel);
     } catch (err) { console.log(err) }
   };
   return (
