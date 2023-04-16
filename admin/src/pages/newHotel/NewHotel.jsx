@@ -52,8 +52,12 @@ const NewHotel = () => {
         rooms,
         photos: list,
       };
-
-      await axios.post("https://fypbookingbea.adaptable.app/api" + "/hotels", newhotel);
+      const token = localStorage.getItem("x-access-token");
+      if (token) {
+        await axios.post("https://fypbookingbea.adaptable.app/api" + "/hotels", newhotel, {
+          headers: { "x-access-token": token },
+        });
+      }
     } catch (err) { console.log(err) }
   };
   return (

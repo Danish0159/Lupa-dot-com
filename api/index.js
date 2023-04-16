@@ -5,7 +5,7 @@ import authRoute from "./routes/auth.js";
 import usersRoute from "./routes/users.js";
 import hotelsRoute from "./routes/hotels.js";
 import roomsRoute from "./routes/rooms.js";
-import cookieParser from "cookie-parser";
+// import cookieParser from "cookie-parser";
 import cors from "cors";
 
 const app = express();
@@ -25,18 +25,18 @@ mongoose.connection.on("disconnected", () => {
 });
 
 const genres = [
-  { id: 1, name: 'Action' },  
-  { id: 2, name: 'Horror' },  
-  { id: 3, name: 'Romance' },  
+  { id: 1, name: "Action" },
+  { id: 2, name: "Horror" },
+  { id: 3, name: "Romance" },
 ];
 
-app.get('/api/genres', (req, res) => {
+app.get("/api/genres", (req, res) => {
   res.send(genres);
 });
 
 //middlewares
-app.use(cors())
-app.use(cookieParser())
+app.use(cors());
+// app.use(cookieParser());
 app.use(express.json());
 
 app.use("/api/auth", authRoute);

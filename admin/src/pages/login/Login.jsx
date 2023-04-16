@@ -25,6 +25,7 @@ const Login = () => {
     try {
       const res = await axios.post("https://fypbookingbea.adaptable.app/api" + "/auth/login", credentials);
       if (res.data.isAdmin) {
+        localStorage.setItem("x-access-token", res.data.token);
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
 
         navigate("/");
