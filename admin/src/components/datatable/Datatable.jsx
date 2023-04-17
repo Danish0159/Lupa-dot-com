@@ -20,7 +20,12 @@ const Datatable = ({ columns }) => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`/${path}/${id}`);
+      const token = localStorage.getItem("x-access-token");
+      if (token) {
+        await axios.delete(`https://fypbookingbea.adaptable.app/api/${path}/${id}`, {
+          headers: { "x-access-token": token },
+        });
+      }
       setList(list.filter((item) => item._id !== id));
     } catch (err) { }
   };

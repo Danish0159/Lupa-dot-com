@@ -31,8 +31,12 @@ const New = ({ inputs, title }) => {
         ...info,
         img: url,
       };
-
-      await axios.post("https://fypbookingbea.adaptable.app/api" + "auth/register", newUser);
+      const token = localStorage.getItem("x-access-token");
+      if (token) {
+        await axios.post("https://fypbookingbea.adaptable.app/api" + "/auth/register", newUser, {
+          headers: { "x-access-token": token },
+        });
+      }
     } catch (err) {
       console.log(err);
     }

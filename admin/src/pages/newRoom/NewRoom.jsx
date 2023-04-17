@@ -22,7 +22,12 @@ const NewRoom = () => {
     e.preventDefault();
     const roomNumbers = rooms.split(",").map((room) => ({ number: room }));
     try {
-      await axios.post("https://fypbookingbea.adaptable.app/api" + `/rooms/${hotelId}`, { ...info, roomNumbers });
+      const token = localStorage.getItem("x-access-token");
+      if (token) {
+        await axios.post("https://fypbookingbea.adaptable.app/api" + `/rooms/${hotelId}`, { ...info, roomNumbers }, {
+          headers: { "x-access-token": token },
+        });
+      }
     } catch (err) {
       console.log(err);
     }
