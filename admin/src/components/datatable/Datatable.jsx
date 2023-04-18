@@ -5,6 +5,8 @@ import { Link, useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
+import { toast } from "react-toastify";
+import AbsoluteSpinner from "../AbsoluteSpinner";
 
 const Datatable = ({ columns }) => {
   const location = useLocation();
@@ -16,15 +18,20 @@ const Datatable = ({ columns }) => {
     setList(data);
   }, [data]);
 
-  console.log(data);
-
   const handleDelete = async (id) => {
     try {
       const token = localStorage.getItem("x-access-token");
       if (token) {
         await axios.delete(`https://fypbookingbea.adaptable.app/api/${path}/${id}`, {
           headers: { "x-access-token": token },
-        });
+        }).then((response) => {
+          if (response.status == 200) {
+            toast.success(`${path.replace(/.$/, '')} has been deleted.`);
+          }
+          else {
+            toast.error(`There was an error in creating ${path}`);
+          }
+        });;
       }
       setList(list.filter((item) => item._id !== id));
     } catch (err) { }
@@ -53,6 +60,9 @@ const Datatable = ({ columns }) => {
     },
   ];
 
+  if (loading) {
+    return <AbsoluteSpinner></AbsoluteSpinner>
+  }
   return (
     <div className="datatable">
       <div className="datatableTitle">

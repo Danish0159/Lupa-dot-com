@@ -27,7 +27,6 @@ const Login = () => {
       if (res.data.isAdmin) {
         localStorage.setItem("x-access-token", res.data.token);
         dispatch({ type: "LOGIN_SUCCESS", payload: res.data.details });
-
         navigate("/");
       } else {
         dispatch({

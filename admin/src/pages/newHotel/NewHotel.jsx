@@ -6,11 +6,15 @@ import { useState } from "react";
 import { hotelInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
+import { toast } from 'react-toastify';
+import AbsoluteSpinner from "../../components/AbsoluteSpinner";
+
 
 const NewHotel = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
+  const [Hloading, setHLoading] = useState(false);
 
   const { data, loading, error } = useFetch("/rooms");
 
@@ -26,10 +30,10 @@ const NewHotel = () => {
     setRooms(value);
   };
 
-  console.log(files)
 
   const handleClick = async (e) => {
     e.preventDefault();
+    setHLoading(true);
     try {
       const list = await Promise.all(
         Object.values(files).map(async (file) => {
@@ -56,10 +60,31 @@ const NewHotel = () => {
       if (token) {
         await axios.post("https://fypbookingbea.adaptable.app/api" + "/hotels", newhotel, {
           headers: { "x-access-token": token },
+        }).then((response) => {
+          if (response.status == 200) {
+            toast.success("Hotel has been created.");
+            setHLoading(false);
+          }
+          else {
+            toast.error("There was an error in creating Hotel.");
+            setHLoading(false);
+          }
         });
       }
     } catch (err) { console.log(err) }
   };
+  if (Hloading) {
+    return <div className="new">
+      <Sidebar />
+      <div className="newContainer">
+        <Navbar />
+        <div className="top">
+          <h1>Add New Hotel</h1>
+        </div>
+        <AbsoluteSpinner></AbsoluteSpinner>
+      </div>
+    </div>
+  }
   return (
     <div className="new">
       <Sidebar />
