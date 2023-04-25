@@ -4,7 +4,7 @@ import Spinner from "../Spinner";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "/hotels/countByCity?cities=Lahore,madrid,london"
+    "/hotels/countByCity?cities=Islamabad,madrid,london"
   );
 
   if (loading) {
@@ -19,7 +19,7 @@ const Featured = () => {
           className="featuredImg"
         />
         <div className="featuredTitles">
-          <h1>Lahore</h1>
+          <h1>Islamabad</h1>
           <h2>{data[0]} properties</h2>
         </div>
       </div>

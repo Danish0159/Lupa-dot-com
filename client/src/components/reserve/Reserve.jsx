@@ -7,6 +7,7 @@ import { useContext, useState } from "react";
 import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Reserve = ({ setOpen, hotelId }) => {
   const [selectedRooms, setSelectedRooms] = useState([]);
@@ -55,15 +56,18 @@ const Reserve = ({ setOpen, hotelId }) => {
     try {
       await Promise.all(
         selectedRooms.map((roomId) => {
-          const res = axios.put(`/rooms/availability/${roomId}`, {
+          const res = axios.put(`https://fypbookingbea.adaptable.app/api/rooms/availability/${roomId}`, {
             dates: alldates,
           });
           return res.data;
         })
       );
+      toast.success("Room status has been updated.")
       setOpen(false);
       navigate("/");
-    } catch (err) { }
+    } catch (err) {
+      toast.error("Their was an error in updating the room status.")
+    }
   };
   return (
     <div className="reserve">

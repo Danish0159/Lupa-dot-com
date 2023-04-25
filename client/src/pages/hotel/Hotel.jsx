@@ -45,17 +45,17 @@ const Hotel = () => {
     setOpen(true);
   };
 
-  const handleMove = (direction) => {
-    let newSlideNumber;
+  // const handleMove = (direction) => {
+  //   let newSlideNumber;
 
-    if (direction === "l") {
-      newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
-    } else {
-      newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
-    }
+  //   if (direction === "l") {
+  //     newSlideNumber = slideNumber === 0 ? 5 : slideNumber - 1;
+  //   } else {
+  //     newSlideNumber = slideNumber === 5 ? 0 : slideNumber + 1;
+  //   }
 
-    setSlideNumber(newSlideNumber);
-  };
+  //   setSlideNumber(newSlideNumber);
+  // };
 
   const handleClick = () => {
     if (user) {
@@ -72,7 +72,7 @@ const Hotel = () => {
         <AbsoluteSpinner></AbsoluteSpinner>
       ) : (
         <div className="hotelContainer">
-          {open && (
+          {/* {open && (
             <div className="slider">
               <FontAwesomeIcon
                 icon={faCircleXmark}
@@ -97,9 +97,9 @@ const Hotel = () => {
                 onClick={() => handleMove("r")}
               />
             </div>
-          )}
+          )} */}
           <div className="hotelWrapper">
-            <button className="bookNow">Reserve or Book Now!</button>
+            <button onClick={handleClick} className="bookNow">Reserve or Book Now!</button>
             <h1 className="hotelTitle">{data.name}</h1>
             <div className="hotelAddress">
               <FontAwesomeIcon icon={faLocationDot} />
