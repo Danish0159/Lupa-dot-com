@@ -21,7 +21,7 @@ const Sidebar = () => {
     <div className="sidebar">
       <div className="top">
         <Link to="/" style={{ textDecoration: "none" }}>
-          <span className="logo">bookingbea</span>
+          <span className="logo">BookingBea</span>
         </Link>
       </div>
       <hr />
@@ -30,7 +30,9 @@ const Sidebar = () => {
           <p className="title">MAIN</p>
           <li>
             <DashboardIcon className="icon" />
-            <Link to="/" style={{ textDecoration: "none" }}><span>Dashboard</span></Link>
+            <Link to="/" style={{ textDecoration: "none" }}>
+              <span>Dashboard</span>
+            </Link>
           </li>
           <p className="title">LISTS</p>
           <Link to="/users" style={{ textDecoration: "none" }}>
@@ -51,10 +53,13 @@ const Sidebar = () => {
               <span>Rooms</span>
             </li>
           </Link>
-          {/* <li>
-            <LocalShippingIcon className="icon" />
-            <span>Delivery</span>
-          </li> */}
+          <Link to="/cars" style={{ textDecoration: "none" }}>
+            <li>
+              <LocalShippingIcon className="icon" />
+              <span>Cars</span>
+            </li>
+          </Link>
+
           {/* <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />
@@ -82,13 +87,15 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li onClick={() => {
-            localStorage.removeItem("x-access-token");
-            localStorage.removeItem("user");
-            window.location.reload();
-          }}>
+          <li
+            onClick={() => {
+              localStorage.removeItem("x-access-token");
+              localStorage.removeItem("user");
+              window.location.reload();
+            }}
+          >
             <ExitToAppIcon className="icon" />
-            <span >Logout</span>
+            <span>Logout</span>
           </li>
         </ul>
       </div>

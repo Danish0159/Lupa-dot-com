@@ -36,39 +36,6 @@ export const userInputs = [
   },
 ];
 
-export const productInputs = [
-  {
-    id: 1,
-    label: "Title",
-    type: "text",
-    placeholder: "Apple Macbook Pro",
-  },
-  {
-    id: 2,
-    label: "Description",
-    type: "text",
-    placeholder: "Description",
-  },
-  {
-    id: 3,
-    label: "Category",
-    type: "text",
-    placeholder: "Computers",
-  },
-  {
-    id: 4,
-    label: "Price",
-    type: "text",
-    placeholder: "100",
-  },
-  {
-    id: 5,
-    label: "Stock",
-    type: "text",
-    placeholder: "in stock",
-  },
-];
-
 export const hotelInputs = [
   {
     id: "name",
@@ -144,5 +111,67 @@ export const roomInputs = [
     label: "Max People",
     type: "number",
     placeholder: "2",
+  },
+];
+export const carDataInputs = [
+  {
+    id: "name",
+    label: "Name",
+    type: "text",
+    placeholder: "Uber Driver",
+  },
+  {
+    id: "type",
+    label: "Type",
+    type: "text",
+    placeholder: "Car Type",
+  },
+  {
+    id: "city",
+    label: "City",
+    type: "text",
+    placeholder: "Murree",
+  },
+  {
+    id: "description",
+    label: "Description",
+    type: "text",
+    placeholder: "Air Conditioner 4 Seater",
+  },
+  {
+    id: "address",
+    label: "Address",
+    type: "text",
+    placeholder: "london",
+  },
+  {
+    id: "CNIC",
+    label: "CNIC",
+    type: "number",
+    placeholder: "london",
+  },
+  {
+    id: "price",
+    label: "Price",
+    type: "number",
+    placeholder: "3000/Hour",
+  },
+  {
+    id: "maxSeats",
+    label: "MaxSeats",
+    type: "number",
+    placeholder: "MaxSeats",
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    type: "text",
+    placeholder: "+9203062148610",
+  },
+  {
+    id: "country",
+    label: "Country",
+    type: "text",
+    placeholder: "Pakistan",
   },
 ];

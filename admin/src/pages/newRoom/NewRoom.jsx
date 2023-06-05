@@ -28,18 +28,23 @@ const NewRoom = () => {
     try {
       const token = localStorage.getItem("x-access-token");
       if (token) {
-        await axios.post("https://fypbookingbea.adaptable.app/api" + `/rooms/${hotelId}`, { ...info, roomNumbers }, {
-          headers: { "x-access-token": token },
-        }).then((response) => {
-          if (response.status == 200) {
-            toast.success("Room has been created.");
-            setRLoading(false);
-          }
-          else {
-            toast.error("There was an error in creating Room.");
-            setRLoading(false);
-          }
-        });
+        await axios
+          .post(
+            "https://fypbookingbea.adaptable.app/api" + `/rooms/${hotelId}`,
+            { ...info, roomNumbers },
+            {
+              headers: { "x-access-token": token },
+            }
+          )
+          .then((response) => {
+            if (response.status == 200) {
+              toast.success("Room has been created.");
+              setRLoading(false);
+            } else {
+              toast.error("There was an error in creating Room.");
+              setRLoading(false);
+            }
+          });
       }
     } catch (err) {
       console.log(err);
@@ -47,16 +52,18 @@ const NewRoom = () => {
   };
 
   if (Rloading) {
-    return <div className="new">
-      <Sidebar />
-      <div className="newContainer">
-        <Navbar />
-        <div className="top">
-          <h1>Add New Room</h1>
+    return (
+      <div className="new">
+        <Sidebar />
+        <div className="newContainer">
+          <Navbar />
+          <div className="top">
+            <h1>Add New Room</h1>
+          </div>
+          <AbsoluteSpinner></AbsoluteSpinner>
         </div>
-        <AbsoluteSpinner></AbsoluteSpinner>
       </div>
-    </div>
+    );
   }
   return (
     <div className="new">
@@ -96,9 +103,11 @@ const NewRoom = () => {
                   {loading
                     ? "loading"
                     : data &&
-                    data.map((hotel) => (
-                      <option key={hotel._id} value={hotel._id}>{hotel.name}</option>
-                    ))}
+                      data.map((hotel) => (
+                        <option key={hotel._id} value={hotel._id}>
+                          {hotel.name}
+                        </option>
+                      ))}
                 </select>
               </div>
               <button onClick={handleClick}>Send</button>

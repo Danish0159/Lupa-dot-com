@@ -22,16 +22,17 @@ const Datatable = ({ columns }) => {
     try {
       const token = localStorage.getItem("x-access-token");
       if (token) {
-        await axios.delete(`https://fypbookingbea.adaptable.app/api/${path}/${id}`, {
-          headers: { "x-access-token": token },
-        }).then((response) => {
-          if (response.status == 200) {
-            toast.success(`${path.replace(/.$/, '')} has been deleted.`);
-          }
-          else {
-            toast.error(`There was an error in creating ${path}`);
-          }
-        });;
+        await axios
+          .delete(`https://fypbookingbea.adaptable.app/api/${path}/${id}`, {
+            headers: { "x-access-token": token },
+          })
+          .then((response) => {
+            if (response.status === 200) {
+              toast.success(`${path.replace(/.$/, "")} has been deleted.`);
+            } else {
+              toast.error(`There was an error in creating ${path}`);
+            }
+          });
       }
       setList(list.filter((item) => item._id !== id));
     } catch (err) { }
@@ -61,7 +62,7 @@ const Datatable = ({ columns }) => {
   ];
 
   if (loading) {
-    return <AbsoluteSpinner></AbsoluteSpinner>
+    return <AbsoluteSpinner></AbsoluteSpinner>;
   }
   return (
     <div className="datatable">
@@ -71,7 +72,7 @@ const Datatable = ({ columns }) => {
           Add New
         </Link>
       </div>
-      {list &&
+      {list && (
         <DataGrid
           className="datagrid"
           rows={list}
@@ -81,7 +82,7 @@ const Datatable = ({ columns }) => {
           checkboxSelection
           getRowId={(row) => row._id}
         />
-      }
+      )}
     </div>
   );
 };

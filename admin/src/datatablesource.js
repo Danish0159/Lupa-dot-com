@@ -87,3 +87,42 @@ export const roomColumns = [
     width: 100,
   },
 ];
+
+export const carColumns = [
+  { field: "_id", headerName: "ID", width: 70 },
+  {
+    field: "name",
+    headerName: "Person Name",
+    width: 230,
+  },
+  {
+    field: "type",
+    headerName: "Car Name",
+    width: 230,
+  },
+  {
+    field: "city",
+    headerName: "City",
+    width: 230,
+  },
+  // {
+  //   field: "price",
+  //   headerName: "Price",
+  //   width: 100,
+  // },
+  // {
+  //   field: "cnic",
+  //   headerName: "CNIC",
+  //   width: 100,
+  // },
+  // {
+  //   field: "city",
+  //   headerName: "City",
+  //   width: 100,
+  // },
+  // {
+  //   field: "address",
+  //   headerName: "Address",
+  //   width: 100,
+  // },
+];

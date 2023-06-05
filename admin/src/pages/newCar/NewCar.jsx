@@ -1,21 +1,21 @@
-import "./newHotel.scss";
+import "./newCar.scss";
 import Sidebar from "../../components/sidebar/Sidebar";
 import Navbar from "../../components/navbar/Navbar";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { useState } from "react";
-import { hotelInputs } from "../../formSource";
+import { hotelInputs, carDataInputs } from "../../formSource";
 import useFetch from "../../hooks/useFetch";
 import axios from "axios";
 import { toast } from "react-toastify";
 import AbsoluteSpinner from "../../components/AbsoluteSpinner";
 
-const NewHotel = () => {
+const NewCar = () => {
   const [files, setFiles] = useState("");
   const [info, setInfo] = useState({});
   const [rooms, setRooms] = useState([]);
   const [Hloading, setHLoading] = useState(false);
 
-  const { data, loading, error } = useFetch("/rooms");
+  // const { data, loading, error } = useFetch("/cars");
 
   const handleChange = (e) => {
     setInfo((prev) => ({ ...prev, [e.target.id]: e.target.value }));
@@ -51,25 +51,23 @@ const NewHotel = () => {
 
       const newhotel = {
         ...info,
-        rooms,
         photos: list,
       };
       const token = localStorage.getItem("x-access-token");
+      console.log(newhotel);
       if (token) {
+        console.log(newhotel);
         await axios
-          .post(
-            "https://fypbookingbea.adaptable.app/api" + "/hotels",
-            newhotel,
-            {
-              headers: { "x-access-token": token },
-            }
-          )
+          .post("https://fypbookingbea.adaptable.app/api" + "/cars", newhotel, {
+            // .post("http://localhost:1234/api/cars", newhotel, {
+            headers: { "x-access-token": token },
+          })
           .then((response) => {
             if (response.status == 200) {
-              toast.success("Hotel has been created.");
+              toast.success("Car has been Listed.");
               setHLoading(false);
             } else {
-              toast.error("There was an error in creating Hotel.");
+              toast.error("There was an error in listing Car.");
               setHLoading(false);
             }
           });
@@ -85,7 +83,7 @@ const NewHotel = () => {
         <div className="newContainer">
           <Navbar />
           <div className="top">
-            <h1>Add New Hotel</h1>
+            <h1>List New Car</h1>
           </div>
           <AbsoluteSpinner></AbsoluteSpinner>
         </div>
@@ -98,7 +96,7 @@ const NewHotel = () => {
       <div className="newContainer">
         <Navbar />
         <div className="top">
-          <h1>Add New Hotel</h1>
+          <h1>Add New Car</h1>
         </div>
         <div className="bottom">
           <div className="left">
@@ -126,7 +124,7 @@ const NewHotel = () => {
                 />
               </div>
 
-              {hotelInputs.map((input) => (
+              {carDataInputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
                   <input
@@ -137,26 +135,7 @@ const NewHotel = () => {
                   />
                 </div>
               ))}
-              <div className="formInput">
-                <label>Featured</label>
-                <select id="featured" onChange={handleChange}>
-                  <option value={false}>No</option>
-                  <option value={true}>Yes</option>
-                </select>
-              </div>
-              <div className="selectRooms">
-                <label>Rooms</label>
-                <select id="rooms" multiple onChange={handleSelect}>
-                  {loading
-                    ? "loading"
-                    : data &&
-                      data.map((room) => (
-                        <option key={room._id} value={room._id}>
-                          {room.title}
-                        </option>
-                      ))}
-                </select>
-              </div>
+
               <button onClick={handleClick}>Send</button>
             </form>
           </div>
@@ -166,4 +145,4 @@ const NewHotel = () => {
   );
 };
 
-export default NewHotel;
+export default NewCar;
