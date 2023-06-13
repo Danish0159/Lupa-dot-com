@@ -5,16 +5,54 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 import SingleBedIcon from '@mui/icons-material/SingleBed';
 import FireplaceIcon from '@mui/icons-material/Fireplace';
 import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import { useEffect, useState } from "react";
+// const { id } = useParams();
+
 const Widget = ({ type }) => {
-  let data;
+  const [hotels, setHotels] = useState();
+  const [users, setUsers] = useState();
+  const { data, loading, error } = useFetch("/hotels");
+  useEffect(() => {
+    setHotels(data.length);
+  }, [data]);
+
+  const [rooms, setRooms] = useState(0);
+  useEffect(() => {
+    const fetchRoomList = async () => {
+      try {
+        const response = await fetch("https://fypbookingbea.adaptable.app/api/cars");
+        const data = await response.json();
+        setRooms(data.length);
+
+        const responseU = await fetch("https://fypbookingbea.adaptable.app/api/users");
+        const data2 = await responseU.json();
+        setUsers(data2.length);
+      } catch (error) {
+        console.error("Error fetching car list:", error);
+      }
+    };
+
+    fetchRoomList();
+  }, []);
+  //const { dataHotels, loading, error } = useFetch("/hotels");
+  // console.log("bkj" + dataHotels);
+  //useEffect(() => {
+  //setList(dataHotels);
+  //}, [dataHotels]);
+
+  //console.log(list);
+
+  let dashdata;
 
   switch (type) {
     case "user":
-      data = {
+      dashdata = {
         title: "USERS",
         link: "See all Users",
         url: "/users",
-        amount: 120,
+        amount: users,
         diff: 30,
         icon: (
           <PersonOutlinedIcon
@@ -28,11 +66,11 @@ const Widget = ({ type }) => {
       };
       break;
     case "hotel":
-      data = {
+      dashdata = {
         title: "HOTELS",
         link: "View all Hotels",
         url: "/hotels",
-        amount: 215,
+        amount: hotels,
         diff: 15,
         icon: (
           <SingleBedIcon
@@ -46,11 +84,11 @@ const Widget = ({ type }) => {
       };
       break;
     case "room":
-      data = {
+      dashdata = {
         title: "ROOMS",
         link: "View all Rooms",
         url: "/rooms",
-        amount: 12,
+        amount: rooms,
         diff: 20,
         icon: (
           <FireplaceIcon
@@ -61,7 +99,7 @@ const Widget = ({ type }) => {
       };
       break;
     case "balance":
-      data = {
+      dashdata = {
         title: "BALANCE",
         link: "See details",
         isMoney: true,
@@ -85,18 +123,18 @@ const Widget = ({ type }) => {
   return (
     <div className="widget">
       <div className="left">
-        <span className="title">{data.title}</span>
+        <span className="title">{dashdata.title}</span>
         <span className="counter">
-          {data.isMoney && "$"}{data.amount}+
+          {dashdata.isMoney && "$"}{dashdata.amount}+
         </span>
-        <Link to={data.url} style={{ textDecoration: "none" }}><span className="link">{data.link}</span></Link>
+        <Link to={dashdata.url} style={{ textDecoration: "none" }}><span className="link">{dashdata.link}</span></Link>
       </div>
       <div className="right">
         <div className="percentage positive">
           <KeyboardArrowUpIcon />
-          {data.diff} %
+          {dashdata.diff} %
         </div>
-        {data.icon}
+        {dashdata.icon}
       </div>
     </div >
   );

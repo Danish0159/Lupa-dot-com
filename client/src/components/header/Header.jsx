@@ -3,12 +3,12 @@ import {
   faCalendarDays,
   faCar,
   faPerson,
-  faPlane,
-  faTaxi,
+  faTowerObservation,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./header.css";
 import { DateRange } from "react-date-range";
+
 import { useContext, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
@@ -37,7 +37,6 @@ const Header = ({ type }) => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
-
   const handleOption = (name, operation) => {
     setOptions((prev) => {
       return {
@@ -53,10 +52,19 @@ const Header = ({ type }) => {
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
+  const handleClickCar = () => {
+    //dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/carRentals");
+  };
+  const handleClickAttraction = () => {
+    //dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
+    navigate("/Attraction");
+  };
 
   return (
     <div className="header">
       <div
+        id="headerContainer"
         className={
           type === "list" ? "headerContainer listMode" : "headerContainer"
         }
@@ -64,23 +72,19 @@ const Header = ({ type }) => {
         <div className="headerList">
           <div className="headerListItem active">
             <FontAwesomeIcon icon={faBed} />
-            <span>Hotels</span>
+            <span>Stays</span>
+          </div>
+
+          <div className="headerListItem">
+            <FontAwesomeIcon icon={faCar} onClick={handleClickCar} />
+            <span onClick={handleClickCar}>Car rentals</span>
           </div>
           <div className="headerListItem">
-            <FontAwesomeIcon icon={faPlane} />
-            <span>Rooms</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faCar} />
-            <span>Users</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faBed} />
-            <span>Attractions</span>
-          </div>
-          <div className="headerListItem">
-            <FontAwesomeIcon icon={faTaxi} />
-            <span>Airport taxis</span>
+            <FontAwesomeIcon
+              icon={faTowerObservation}
+              onClick={handleClickAttraction}
+            />
+            <span onClick={handleClickAttraction}>Attractions</span>
           </div>
         </div>
         {/* Display for Home Page */}

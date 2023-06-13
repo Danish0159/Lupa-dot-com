@@ -12,12 +12,6 @@
   margin: 20px 0px 100px 0px;
 }
 
-#headerContainer {
-  width: 100%;
-  max-width: 1024px;
-  margin: 20px 0px 100px 0px;
-}
-
 .headerContainer.listMode {
   margin: 20px 0px 0px 0px;
 }
@@ -32,6 +26,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
+  cursor: pointer;
 }
 
 .headerListItem.active {
@@ -53,18 +48,18 @@
   cursor: pointer;
 }
 
-.headerSearch {
+.headerSearchat {
   height: 30px;
   background-color: white;
   border: 3px solid #febb02;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 10px 0px;
   border-radius: 5px;
   position: absolute;
   bottom: -25px;
-  width: 100%;
+  width: 70%;
   max-width: 1024px;
 }
 
@@ -72,10 +67,12 @@
   color: lightgray;
 }
 
-.headerSearchItem {
+.headerSearchItemat {
   display: flex;
   align-items: center;
   gap: 10px;
+  padding-left: 70px;
+  padding-right: 40px;
 }
 
 .headerSearchInput {

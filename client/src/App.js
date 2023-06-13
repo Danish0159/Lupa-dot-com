@@ -5,6 +5,9 @@ import List from "./pages/list/List";
 import ErrorPage from "./pages/error/ErrorPage";
 import Login from "./pages/login/Login";
 import Signup from "./pages/signup/Signup";
+import Attraction from "./pages/attraction/Attraction";
+import CarRentals from "./pages/carRentals/CarRentals";
+import BookingFormPage from "./pages/bookPage/BookingFormPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -18,6 +21,9 @@ function App() {
           <Route path="/hotels/:id" element={<Hotel />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/attraction" element={<Attraction />} />
+          <Route path="/carRentals" element={<CarRentals />} />
+          <Route path="/carRentals/:id" element={<BookingFormPage />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

@@ -16,7 +16,7 @@ const Home = () => {
         {/* Count Properties(With respect to city) */}
         <Featured />
         {/* Count Properties(By type i,e hotels, villas etc) */}
-        <h1 className="homeTitle">Browse by property type</h1>
+        <h1 className="homeTitle">Available Properties</h1>
         <PropertyList />
         {/* Featured Hotels */}
         <h1 className="homeTitle">Homes guests love</h1>
