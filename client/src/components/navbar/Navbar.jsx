@@ -13,6 +13,7 @@ const Navbar = () => {
           <span className="logo">BookingBea</span>
         </Link>
         {user ? <div>
+          <Link to="/reserve"><button className="navButton">Reserved Report</button></Link>
           <button className="navButton">{user.username}</button>
           <button onClick={() => {
             localStorage.removeItem("user");
@@ -21,7 +22,6 @@ const Navbar = () => {
         </div> : (
           <div className="navItems">
             <Link to="/login"><button className="navButton">Login</button></Link>
-            <Link to="/login"><button className="navButton">Register</button></Link>
           </div>
         )}
       </div>

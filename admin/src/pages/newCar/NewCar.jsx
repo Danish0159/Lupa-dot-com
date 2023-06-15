@@ -110,7 +110,7 @@ const NewCar = () => {
             />
           </div>
           <div className="right">
-            <form>
+            <form onSubmit={handleClick}>
               <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
@@ -121,6 +121,7 @@ const NewCar = () => {
                   multiple
                   onChange={(e) => setFiles(e.target.files)}
                   style={{ display: "none" }}
+                  required={true}
                 />
               </div>
 
@@ -132,11 +133,12 @@ const NewCar = () => {
                     onChange={handleChange}
                     type={input.type}
                     placeholder={input.placeholder}
+                    required={true}
                   />
                 </div>
               ))}
 
-              <button onClick={handleClick}>Send</button>
+              <button type="submit">Send</button>
             </form>
           </div>
         </div>

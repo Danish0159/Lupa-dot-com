@@ -112,7 +112,7 @@ const NewHotel = () => {
             />
           </div>
           <div className="right">
-            <form>
+            <form onSubmit={handleClick}>
               <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
@@ -123,6 +123,7 @@ const NewHotel = () => {
                   multiple
                   onChange={(e) => setFiles(e.target.files)}
                   style={{ display: "none" }}
+                  required={true}
                 />
               </div>
 
@@ -134,6 +135,7 @@ const NewHotel = () => {
                     onChange={handleChange}
                     type={input.type}
                     placeholder={input.placeholder}
+                    required={true}
                   />
                 </div>
               ))}
@@ -146,18 +148,18 @@ const NewHotel = () => {
               </div>
               <div className="selectRooms">
                 <label>Rooms</label>
-                <select id="rooms" multiple onChange={handleSelect}>
+                <select id="rooms" multiple onChange={handleSelect} required={true}>
                   {loading
                     ? "loading"
                     : data &&
-                      data.map((room) => (
-                        <option key={room._id} value={room._id}>
-                          {room.title}
-                        </option>
-                      ))}
+                    data.map((room) => (
+                      <option key={room._id} value={room._id}>
+                        {room.title}
+                      </option>
+                    ))}
                 </select>
               </div>
-              <button onClick={handleClick}>Send</button>
+              <button type="submit">Send</button>
             </form>
           </div>
         </div>

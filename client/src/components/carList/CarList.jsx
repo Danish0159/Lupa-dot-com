@@ -15,6 +15,7 @@ const CarList = () => {
         const response = await fetch("https://fypbookingbea.adaptable.app/api/cars");
         const data = await response.json();
         setCarList(data);
+        console.log(filteredCars);
         setFilteredCars(data);
       } catch (error) {
         console.error("Error fetching car list:", error);

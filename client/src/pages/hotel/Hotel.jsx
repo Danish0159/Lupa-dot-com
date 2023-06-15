@@ -26,6 +26,7 @@ const Hotel = () => {
   const [openModal, setOpenModal] = useState(false);
 
   const { data, loading, error } = useFetch(`/hotels/find/${id}`);
+  console.log(data);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
@@ -147,7 +148,7 @@ const Hotel = () => {
           <Footer />
         </div>
       )}
-      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
+      {openModal && <Reserve setOpen={setOpenModal} hotelId={id} roomId={data.rooms[0]} />}
     </div>
   );
 };

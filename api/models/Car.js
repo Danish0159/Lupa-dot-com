@@ -43,6 +43,8 @@ const CarSchema = new mongoose.Schema({
   photos: {
     type: [String],
   },
+  pickupTime: { type: String, default: null },
+  returnTime: { type: String, default: null },
 });
 
 export default mongoose.model("Car", CarSchema);

@@ -12,7 +12,7 @@ import { useContext, useState } from "react";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { format } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 
@@ -94,7 +94,7 @@ const CarHeader = ({ type }) => {
           <>
             <h1 className="headerTitle">Car rentals for any kind of trip</h1>
             <p className="headerDesc">Compare deals for the lowest fare</p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
+            {!user && <Link to="/login" className="headerBtn">Sign in / Register</Link>}
             {/* Re-1 */}
           </>
         )}

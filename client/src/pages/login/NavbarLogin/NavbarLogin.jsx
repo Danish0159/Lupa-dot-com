@@ -11,9 +11,9 @@ const NavbarLogin = () => {
             BookingBea
           </h1>
         </Link>
-        <Link to="/signup" className="btn-small">
+        {/* <Link to="/signup" className="btn-small">
           Register
-        </Link>
+        </Link> */}
       </div>
     </div>
   );

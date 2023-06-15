@@ -87,7 +87,7 @@ const New = ({ inputs, title }) => {
             />
           </div>
           <div className="right">
-            <form>
+            <form onSubmit={handleClick}>
               <div className="formInput">
                 <label htmlFor="file">
                   Image: <DriveFolderUploadOutlinedIcon className="icon" />
@@ -97,6 +97,7 @@ const New = ({ inputs, title }) => {
                   id="file"
                   onChange={(e) => setFile(e.target.files[0])}
                   style={{ display: "none" }}
+                  required={true}
                 />
               </div>
 
@@ -108,10 +109,11 @@ const New = ({ inputs, title }) => {
                     type={input.type}
                     placeholder={input.placeholder}
                     id={input.id}
+                    required={true}
                   />
                 </div>
               ))}
-              <button onClick={handleClick}>Send</button>
+              <button type="submit">Send</button>
             </form>
           </div>
         </div>

@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
 import { AuthContext } from "../../context/AuthContext";
 
-const AttractionHeader = (props,{ type }) => {
+const AttractionHeader = (props, { type }) => {
   const [destination, setDestination] = useState("");
 
   //const [openOptions, setOpenOptions] = useState(false);
@@ -50,7 +50,7 @@ const AttractionHeader = (props,{ type }) => {
     //dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/Attraction");
   };
-  const filterPlaces = () =>{
+  const filterPlaces = () => {
     const placeName = document.getElementById("city").value;
     props.filterEvent(placeName);//passing control to Attraction component
   }
@@ -87,7 +87,7 @@ const AttractionHeader = (props,{ type }) => {
               Enjoy Vacation With Attraction Places
             </h1>
             <p className="headerDesc">Look for the best place</p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
+            {/* {!user && <button className="headerBtn">Sign in / Register</button>} */}
             {/* Re-1 */}
             <div className="headerSearchat">
               <div className="headerSearchItemat">

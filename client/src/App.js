@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/home/Home";
+import Reserve from "./pages/reserve/Reserve";
 import Hotel from "./pages/hotel/Hotel";
 import List from "./pages/list/List";
 import ErrorPage from "./pages/error/ErrorPage";
@@ -24,6 +25,7 @@ function App() {
           <Route path="/attraction" element={<Attraction />} />
           <Route path="/carRentals" element={<CarRentals />} />
           <Route path="/carRentals/:id" element={<BookingFormPage />} />
+          <Route path="/reserve" element={<Reserve />} />
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </BrowserRouter>

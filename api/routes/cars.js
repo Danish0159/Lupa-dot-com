@@ -5,6 +5,7 @@ import {
   updateCar,
   getCar,
   getCars,
+  patchCar,
 } from "../controllers/car.js";
 import { verifyAdmin } from "../utils/verifyToken.js";
 const router = express.Router();
@@ -23,5 +24,6 @@ router.get("/:id", getCar);
 //GET ALL
 
 router.get("/", getCars);
+router.patch("/:id", patchCar);
 
 export default router;

@@ -75,7 +75,7 @@ const NewRoom = () => {
         </div>
         <div className="bottom">
           <div className="right">
-            <form>
+            <form onSubmit={handleClick}>
               {roomInputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>
@@ -84,6 +84,7 @@ const NewRoom = () => {
                     type={input.type}
                     placeholder={input.placeholder}
                     onChange={handleChange}
+                    required={true}
                   />
                 </div>
               ))}
@@ -92,6 +93,7 @@ const NewRoom = () => {
                 <textarea
                   onChange={(e) => setRooms(e.target.value)}
                   placeholder="give comma between room numbers."
+                  required={true}
                 />
               </div>
               <div className="formInput">
@@ -99,18 +101,19 @@ const NewRoom = () => {
                 <select
                   id="hotelId"
                   onChange={(e) => setHotelId(e.target.value)}
+                  required={true}
                 >
                   {loading
                     ? "loading"
                     : data &&
-                      data.map((hotel) => (
-                        <option key={hotel._id} value={hotel._id}>
-                          {hotel.name}
-                        </option>
-                      ))}
+                    data.map((hotel) => (
+                      <option key={hotel._id} value={hotel._id}>
+                        {hotel.name}
+                      </option>
+                    ))}
                 </select>
               </div>
-              <button onClick={handleClick}>Send</button>
+              <button type="submit">Send</button>
             </form>
           </div>
         </div>

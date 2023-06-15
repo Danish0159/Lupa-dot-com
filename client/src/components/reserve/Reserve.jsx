@@ -8,8 +8,10 @@ import { SearchContext } from "../../context/SearchContext";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
 
-const Reserve = ({ setOpen, hotelId }) => {
+const Reserve = ({ setOpen, hotelId, roomId }) => {
+  const { user } = useContext(AuthContext);
   const [selectedRooms, setSelectedRooms] = useState([]);
   const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
   const { dates } = useContext(SearchContext);
@@ -63,12 +65,25 @@ const Reserve = ({ setOpen, hotelId }) => {
         })
       );
       toast.success("Room status has been updated.")
+
+      console.log(roomId);
+      await axios.post("https://fypbookingbea.adaptable.app/api/reserve", { user: user._id, type: "hotel", hotel: hotelId, room: roomId })
+        .then((response) => {
+          if (response.status == 200) {
+            toast.success("Room Reservation status has been updated.");
+            // setHLoading(false);
+          } else {
+            toast.error("There was an error in updating Reservation status.");
+            // setHLoading(false);
+          }
+        });
       setOpen(false);
       navigate("/");
     } catch (err) {
       toast.error("Their was an error in updating the room status.")
     }
   };
+
   return (
     <div className="reserve">
       <div className="rContainer">
