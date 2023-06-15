@@ -127,7 +127,7 @@ const BookingFormPage = () => {
       // console.log("type", "hotel");
       // console.log("user", user._id);
 
-      await axios.post("https://fypbookingbea.adaptable.app/api/api/reserve", { user: user._id, type: "car", car: id })
+      await axios.post("https://fypbookingbea.adaptable.app/api/reserve", { user: user._id, type: "car", car: id })
         .then((response) => {
           if (response.status == 200) {
             toast.success("Car Reservation status has been updated.");
