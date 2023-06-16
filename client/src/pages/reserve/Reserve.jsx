@@ -44,81 +44,81 @@ const Reserve = () => {
     fetchReserveList();
   }, []);
 
-  const filteredCars = [
-    {
-      _id: "64875648f48d1c26a0aeb0ca",
-      name: "Nabeel Jameel",
-      type: "Suzuki Wagnor",
-      city: "Lahore",
-      description: "Air Conditioner 3 Seater",
-      address:
-        "https://www.google.com/maps/place/Nabeel+Medical+Store/@31.5409617,74.3024803,17z/data=!3m1!4b1!4m6!3m5!1s0x3919035eb8792341:0x9564858ddb947a3d!8m2!3d31.5409618!4d74.3073512!16s%2Fg%2F11f40z990d?entry=ttu",
-      CNIC: 349292837465,
-      price: 2500,
-      maxSeats: 3,
-      phone: 3062188622,
-      country: "Pakistan",
-      photos: [
-        "http://res.cloudinary.com/dm1mlee94/image/upload/v1686591047/rt9ryiwc7rky5yt2fh4b.jpg",
-      ],
-      __v: 7,
-      availability: true,
-      bookings: [
-        {
-          pickupTime: "1240-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a02303b05fc98e1497da5",
-        },
-        {
-          pickupTime: "1320-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a21fdef518c48bd9f35e8",
-        },
-        {
-          pickupTime: "1320-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a233def518c48bd9f35ec",
-        },
-        {
-          pickupTime: "1320-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a25afdda7dccde67f605b",
-        },
-        {
-          pickupTime: "1320-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a293ddda7dccde67f6063",
-        },
-        {
-          pickupTime: "1320-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a2994dda7dccde67f6066",
-        },
-        {
-          pickupTime: "1620-01-01T00:00:00.000Z",
-          returnTime: "1111-01-01T00:00:00.000Z",
-          _id: "648a2998dda7dccde67f6069",
-        },
-      ],
-    },
-  ];
-  const item = {
-    _id: "6486799c0a5f8e60e559ceea",
-    name: "Grand Islamabad Hotel",
-    type: "hotel",
-    city: "Islamabad",
-    address: "Islamabad",
-    distance: "500",
-    photos: [
-      "http://res.cloudinary.com/dm1mlee94/image/upload/v1686534554/lfcfltzux02qwsisphzs.jpg",
-    ],
-    title: "Islamabad",
-    desc: "This casual hotel among shops and eateries is 8 km from Fatima Jinnah Park, 10 km from Faisal Mosque and 28 km from Islamabad International Airport. Warmly furnished rooms offer balconies, flat-screen TVs and minifridges, in addition to tea and coffeemaking facilities, and free Wi-Fi. Suites add kitchenettes and/or living areas. Room service is available 24/7.  An airport shuttle is complimentary. Breakfast is served in a rooftop restaurant that features city views. There's also a cafe and event space.",
-    rooms: ["63a1bff4d3a9d03515a0e168", "64867b740a5f8e60e559cf13"],
-    cheapestPrice: 100,
-    featured: true,
-    __v: 0,
-  };
+  // const filteredCars = [
+  //   {
+  //     _id: "64875648f48d1c26a0aeb0ca",
+  //     name: "Nabeel Jameel",
+  //     type: "Suzuki Wagnor",
+  //     city: "Lahore",
+  //     description: "Air Conditioner 3 Seater",
+  //     address:
+  //       "https://www.google.com/maps/place/Nabeel+Medical+Store/@31.5409617,74.3024803,17z/data=!3m1!4b1!4m6!3m5!1s0x3919035eb8792341:0x9564858ddb947a3d!8m2!3d31.5409618!4d74.3073512!16s%2Fg%2F11f40z990d?entry=ttu",
+  //     CNIC: 349292837465,
+  //     price: 2500,
+  //     maxSeats: 3,
+  //     phone: 3062188622,
+  //     country: "Pakistan",
+  //     photos: [
+  //       "http://res.cloudinary.com/dm1mlee94/image/upload/v1686591047/rt9ryiwc7rky5yt2fh4b.jpg",
+  //     ],
+  //     __v: 7,
+  //     availability: true,
+  //     bookings: [
+  //       {
+  //         pickupTime: "1240-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a02303b05fc98e1497da5",
+  //       },
+  //       {
+  //         pickupTime: "1320-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a21fdef518c48bd9f35e8",
+  //       },
+  //       {
+  //         pickupTime: "1320-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a233def518c48bd9f35ec",
+  //       },
+  //       {
+  //         pickupTime: "1320-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a25afdda7dccde67f605b",
+  //       },
+  //       {
+  //         pickupTime: "1320-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a293ddda7dccde67f6063",
+  //       },
+  //       {
+  //         pickupTime: "1320-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a2994dda7dccde67f6066",
+  //       },
+  //       {
+  //         pickupTime: "1620-01-01T00:00:00.000Z",
+  //         returnTime: "1111-01-01T00:00:00.000Z",
+  //         _id: "648a2998dda7dccde67f6069",
+  //       },
+  //     ],
+  //   },
+  // ];
+  // const item = {
+  //   _id: "6486799c0a5f8e60e559ceea",
+  //   name: "Grand Islamabad Hotel",
+  //   type: "hotel",
+  //   city: "Islamabad",
+  //   address: "Islamabad",
+  //   distance: "500",
+  //   photos: [
+  //     "http://res.cloudinary.com/dm1mlee94/image/upload/v1686534554/lfcfltzux02qwsisphzs.jpg",
+  //   ],
+  //   title: "Islamabad",
+  //   desc: "This casual hotel among shops and eateries is 8 km from Fatima Jinnah Park, 10 km from Faisal Mosque and 28 km from Islamabad International Airport. Warmly furnished rooms offer balconies, flat-screen TVs and minifridges, in addition to tea and coffeemaking facilities, and free Wi-Fi. Suites add kitchenettes and/or living areas. Room service is available 24/7.  An airport shuttle is complimentary. Breakfast is served in a rooftop restaurant that features city views. There's also a cafe and event space.",
+  //   rooms: ["63a1bff4d3a9d03515a0e168", "64867b740a5f8e60e559cf13"],
+  //   cheapestPrice: 100,
+  //   featured: true,
+  //   __v: 0,
+  // };
 
   const totalPrice = priceCars.reduce(
     (accumulator, carObj) => accumulator + carObj.car.price,
@@ -162,14 +162,14 @@ const Reserve = () => {
           </div>
 
           <div className="receipt-item">
-            <div className="receipt-label">UserName: danish123</div>
+            <div className="receipt-label">UserName: {user.username}</div>
           </div>
 
           <div className="receipt-item">
-            <div className="receipt-label">Email: danish123@gmail.com</div>
+            <div className="receipt-label">Email: {user.email}</div>
           </div>
           <div className="receipt-item">
-            <div className="total-label">Phone: 123456728</div>
+            <div className="total-label">Phone: {user.phone}</div>
           </div>
         </div>
       </div>
