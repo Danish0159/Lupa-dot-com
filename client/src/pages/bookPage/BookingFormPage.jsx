@@ -113,13 +113,10 @@ const BookingFormPage = () => {
     console.log(returnTime);
     try {
       ///api/cars/bookings
-      await axios.patch(
-        `https://fypbookingbea.adaptable.app/api/cars/${id}`,
-        {
-          pickupTime,
-          returnTime,
-        }
-      );
+      await axios.patch(`https://fypbookingbea.adaptable.app/api/cars/${id}`, {
+        pickupTime,
+        returnTime,
+      });
       toast.success("Car status has been updated.");
 
       // console.log("roomArray", room);
@@ -127,7 +124,12 @@ const BookingFormPage = () => {
       // console.log("type", "hotel");
       // console.log("user", user._id);
 
-      await axios.post("https://fypbookingbea.adaptable.app/api/reserve", { user: user._id, type: "car", car: id })
+      await axios
+        .post("https://fypbookingbea.adaptable.app/api/reserve", {
+          user: user._id,
+          type: "car",
+          car: id,
+        })
         .then((response) => {
           if (response.status == 200) {
             toast.success("Car Reservation status has been updated.");
@@ -137,7 +139,6 @@ const BookingFormPage = () => {
             // setHLoading(false);
           }
         });
-
     } catch (error) {
       if (error.response && error.response.data) {
         setErrorMessage(error.response.data.message);
@@ -148,8 +149,6 @@ const BookingFormPage = () => {
     // };
     // postCar(id);
     // Validate form fields
-
-
   };
 
   return (
@@ -170,7 +169,14 @@ const BookingFormPage = () => {
                 id="userName"
                 className="form-input"
                 value={userName}
-                onChange={(e) => setUserName(e.target.value)}
+                onChange={(event) => {
+                  const { value } = event.target;
+                  const isNumeric = /^\d+$/.test(value); // Check if the value contains only numeric characters
+
+                  if (!isNumeric) {
+                    setUserName(value);
+                  }
+                }}
               />
             </div>
             <div className="form-field">
@@ -182,7 +188,12 @@ const BookingFormPage = () => {
                 id="userLicenseNo"
                 className="form-input"
                 value={userLicenseNo}
-                onChange={(e) => setUserLicenseNo(e.target.value)}
+                onChange={(event) => {
+                  const { value } = event.target;
+                  const numericValue = value.replace(/\D/g, ""); // Remove non-numeric characters
+
+                  setUserLicenseNo(numericValue);
+                }}
               />
             </div>
             <div className="form-field">
@@ -194,7 +205,12 @@ const BookingFormPage = () => {
                 id="userContact"
                 className="form-input"
                 value={userContact}
-                onChange={(e) => setUserContact(e.target.value)}
+                onChange={(event) => {
+                  const { value } = event.target;
+                  const numericValue = value.replace(/\D/g, ""); // Remove non-numeric characters
+
+                  setUserContact(numericValue);
+                }}
               />
             </div>
             <div className="form-field">
@@ -207,6 +223,7 @@ const BookingFormPage = () => {
                 className="form-input"
                 value={pickupHour}
                 onChange={(e) => setPickupHour(e.target.value)}
+                required
               />
             </div>
             <div className="form-field">
@@ -219,6 +236,7 @@ const BookingFormPage = () => {
                 className="form-input"
                 value={returnHour}
                 onChange={(e) => setReturnHour(e.target.value)}
+                required
               />
             </div>
             <button className="form-button" type="submit">

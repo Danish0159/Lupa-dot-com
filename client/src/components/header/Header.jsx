@@ -97,7 +97,11 @@ const Header = ({ type }) => {
               Get rewarded for your travels – unlock instant savings of 10% or
               more with a free BookingBea account
             </p>
-            {!user && <Link to="/login" className="headerBtn">Sign in / Register</Link>}
+            {!user && (
+              <Link to="/login" className="headerBtn">
+                Sign in / Register
+              </Link>
+            )}
             {/* Re-1 */}
             <div className="headerSearch">
               <div className="headerSearchItem">
@@ -106,7 +110,13 @@ const Header = ({ type }) => {
                   type="text"
                   placeholder="Where are you going?"
                   className="headerSearchInput"
-                  onChange={(e) => setDestination(e.target.value)}
+                  onChange={(event) => {
+                    const { value } = event.target;
+                    const formattedValue =
+                      value.charAt(0).toUpperCase() +
+                      value.slice(1).toLowerCase();
+                    setDestination(formattedValue);
+                  }}
                 />
               </div>
               <div className="headerSearchItem">
