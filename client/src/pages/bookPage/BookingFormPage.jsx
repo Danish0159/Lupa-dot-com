@@ -66,6 +66,9 @@ const BookingFormPage = () => {
       alert("User contact number must be 11 digits");
       return;
     }
+    setUserName("");
+    setUserLicenseNo("");
+    setUserContact("");
 
     const convertTo24HourFormat = (time) => {
       const [hour, minute, period] = time.split(":");

@@ -17,6 +17,8 @@ const Reserve = () => {
   const [room, setRooms] = useState(null);
   const [priceCars, setPriceCars] = useState([]);
   const [priceRoom, setPriceRooms] = useState([]);
+  const [pickupTime, setPickUp] = useState([]);
+  const [returnTime, setReturn] = useState([]);
   useEffect(() => {
     const fetchReserveList = async () => {
       try {
@@ -27,7 +29,7 @@ const Reserve = () => {
         const filteredCars = data.filter((obj) => obj.type === "car");
         const filteredHotels = data.filter((obj) => obj.type === "hotel");
         const filteredRoom = data.filter((obj) => Boolean(obj.room));
-        console.log(filteredCars[0].car.price);
+        console.log(filteredCars[0].car.pickupTime);
         console.log(filteredHotels[0].room.price);
         //console.log(filteredRoom);
 
@@ -36,7 +38,9 @@ const Reserve = () => {
         setRooms(filteredRoom);
         setPriceCars(filteredCars);
         setPriceRooms(filteredRoom);
-        //console.log(data);
+        setPickUp(filteredCars);
+        setReturn(filteredCars);
+        console.log(data);
       } catch (error) {
         console.error("Error fetchingReserve Details:", error);
       }
@@ -120,15 +124,64 @@ const Reserve = () => {
   //   __v: 0,
   // };
 
-  const totalPrice = priceCars.reduce(
-    (accumulator, carObj) => accumulator + carObj.car.price,
-    0
-  );
+  const convertTo24HourFormat = (time) => {
+    const hourMinute = time.slice(11, 16); // Extract the hour and minute part from the time string
+    const [hour, minute] = hourMinute.split(":"); // Split the hour and minute values
+    return `${hour.padStart(2, "0")}:${minute}`; // Return the time in 24-hour format
+  };
+
+  const calculateRentalDuration = (returnTime, pickupTime) => {
+    const returnTime24 = convertTo24HourFormat(returnTime);
+    const pickupTime24 = convertTo24HourFormat(pickupTime);
+
+    if (!returnTime24 || !pickupTime24) {
+      // Invalid time format
+      return null;
+    }
+
+    const returnDateTime = new Date(`2023-06-15T${returnTime24}`);
+    const pickupDateTime = new Date(`2023-06-15T${pickupTime24}`);
+
+    if (returnDateTime < pickupDateTime) {
+      returnDateTime.setDate(returnDateTime.getDate() + 1);
+    }
+
+    const durationInHours =
+      (returnDateTime - pickupDateTime) / (1000 * 60 * 60);
+    return durationInHours;
+  };
+
+  const calculateTotalPrice = (priceCars, returnTime, pickupTime) => {
+    const total = priceCars.reduce((accumulator, carObj) => {
+      const { price, pickupTime, returnTime } = carObj.car;
+
+      const rentalDuration = calculateRentalDuration(returnTime, pickupTime);
+
+      if (rentalDuration === null) {
+        // Invalid rental duration
+        return accumulator;
+      }
+
+      const totalPrice = price * rentalDuration;
+      console.log("Qeemat " + totalPrice);
+      return accumulator + totalPrice;
+    }, 0);
+
+    return total;
+  };
+  // console.log(rentalDuration);
+  //const rentalDuration = calculateRentalDuration(returnTime, pickupTime);
+  const totalPrice = calculateTotalPrice(priceCars, pickupTime, returnTime);
+
+  // Use totalPrice as needed
+  console.log(`Total Price: ${totalPrice}`);
+
   const totalPriceR = priceRoom.reduce(
     (accumulator, roomObj) => accumulator + roomObj.room.price,
     0
   );
-  const carPrices = priceCars.map((carObj) => carObj.car.price);
+
+  // const carPrices = priceCars.map((carObj) => carObj.car.price);
   console.log(totalPrice);
   console.log(totalPriceR);
   return (
