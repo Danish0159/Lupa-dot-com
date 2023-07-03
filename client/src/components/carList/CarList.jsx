@@ -12,7 +12,9 @@ const CarList = () => {
   useEffect(() => {
     const fetchCarList = async () => {
       try {
-        const response = await fetch("https://fypbookingbea.adaptable.app/api/cars");
+        const response = await fetch(
+          "https://fypbookingbea.adaptable.app/api/cars"
+        );
         const data = await response.json();
         setCarList(data);
         console.log(filteredCars);
@@ -78,7 +80,7 @@ const CarList = () => {
               </a>
 
               <div className="car-info">
-                <h3>{car.type}</h3>
+                <h3>{car.model}</h3>
                 {/* <p className="car-info">
                   Comfortable Seats with Air-Conditioning.
                 </p> */}

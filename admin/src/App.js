@@ -3,6 +3,7 @@ import Login from "./pages/login/Login";
 import List from "./pages/list/List";
 import Single from "./pages/single/Single";
 import New from "./pages/new/New";
+import ReserveList from "./pages/reserveList/ReserveList";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { carDataInputs, userInputs } from "./formSource";
 import "./style/dark.scss";
@@ -14,6 +15,7 @@ import {
   roomColumns,
   userColumns,
   carColumns,
+  reserveColumns,
 } from "./datatablesource";
 import NewHotel from "./pages/newHotel/NewHotel";
 import NewRoom from "./pages/newRoom/NewRoom";
@@ -149,6 +151,16 @@ function App() {
                 element={
                   <ProtectedRoute>
                     <NewCar />
+                  </ProtectedRoute>
+                }
+              />
+            </Route>
+            <Route path="reserve">
+              <Route
+                index
+                element={
+                  <ProtectedRoute>
+                    <ReserveList columns={reserveColumns} />
                   </ProtectedRoute>
                 }
               />

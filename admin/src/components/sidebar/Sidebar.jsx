@@ -59,7 +59,12 @@ const Sidebar = () => {
               <span>Cars</span>
             </li>
           </Link>
-
+          <Link to="/reserve" style={{ textDecoration: "none" }}>
+            <li>
+              <PsychologyOutlinedIcon className="icon" />
+              <span>Histroy</span>
+            </li>
+          </Link>
           {/* <p className="title">USEFUL</p>
           <li>
             <InsertChartIcon className="icon" />

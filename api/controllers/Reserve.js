@@ -10,6 +10,25 @@ export const createReserve = async (req, res, next) => {
     next(err);
   }
 };
+export const getReserves = async (req, res, next) => {
+  // try {
+  //   const reserves = await Reserve.find();
+  //   res.status(200).json(reserves);
+  // } catch (err) {
+  //   next(err);
+  // }
+  try {
+    const reserves = await Reserve.find()
+      .populate("user")
+      .populate("hotel")
+      .populate("car")
+      .populate("room");
+    // .exec();
+    res.status(200).json(reserves);
+  } catch (err) {
+    next(err);
+  }
+};
 
 export const getReserve = async (req, res, next) => {
   try {

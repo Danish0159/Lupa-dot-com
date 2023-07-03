@@ -24,8 +24,10 @@ const Reserve = () => {
       try {
         const response = await fetch(
           `https://fypbookingbea.adaptable.app/api/reserve/${user._id}`
+          // "http://localhost:1234/api/reserve"
         );
         const data = await response.json();
+        console.log(data);
         const filteredCars = data.filter((obj) => obj.type === "car");
         const filteredHotels = data.filter((obj) => obj.type === "hotel");
         const filteredRoom = data.filter((obj) => Boolean(obj.room));
@@ -40,7 +42,6 @@ const Reserve = () => {
         setPriceRooms(filteredRoom);
         setPickUp(filteredCars);
         setReturn(filteredCars);
-        console.log(data);
       } catch (error) {
         console.error("Error fetchingReserve Details:", error);
       }

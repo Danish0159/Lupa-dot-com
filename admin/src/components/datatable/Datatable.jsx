@@ -35,7 +35,7 @@ const Datatable = ({ columns }) => {
           });
       }
       setList(list.filter((item) => item._id !== id));
-    } catch (err) { }
+    } catch (err) {}
   };
 
   const actionColumn = [
