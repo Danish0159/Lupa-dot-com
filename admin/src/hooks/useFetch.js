@@ -11,8 +11,8 @@ const useFetch = (url) => {
       setLoading(true);
       try {
         const res = await axios.get(
-          // "https://fypbookingbea.adaptable.app/api" + url
-          "http://localhost:1234/api" + url
+          "https://fypbookingbea.adaptable.app/api" + url
+          // "http://localhost:1234/api" + url
         );
         setData(res.data);
       } catch (err) {
@@ -27,8 +27,8 @@ const useFetch = (url) => {
     setLoading(true);
     try {
       const res = await axios.get(
-        //"https://fypbookingbea.adaptable.app/api" + url
-        "http://localhost:1234/api" + url
+        "https://fypbookingbea.adaptable.app/api" + url
+        // "http://localhost:1234/api" + url
       );
       setData(res.data);
     } catch (err) {
